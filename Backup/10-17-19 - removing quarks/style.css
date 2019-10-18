@@ -1,0 +1,31 @@
+.objectButton {
+    width: 100px;
+    vertical-align: top;
+    
+}
+.objectPrice {
+    width: 100px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.objectNum {
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+.objectSpeed {
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+.objectLabel, .speedLabel, .numLabel, .costLabel {
+    width: 100px;
+    display: inline-block;
+}
+.costLabel {
+    margin-left: 10px;
+}
+.topLabel {
+    margin: 10px 0;
+    border-bottom: 1px solid black;
+}

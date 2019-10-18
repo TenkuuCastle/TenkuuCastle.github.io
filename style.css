@@ -1,0 +1,71 @@
+.menu-container {
+    width: 100%;
+}
+.mainResourceContainer {
+    display: inline-block;
+}
+.objectButton {
+    width: 100px;
+    vertical-align: top;
+    
+}
+.objectPrice {
+    width: 100px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.objectNum {
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+.objectSpeed {
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+.objectLabel, .speedLabel, .numLabel, .costLabel {
+    width: 100px;
+    display: inline-block;
+}
+#autobuyerLabel, #autobuyerCostLabel {
+    width: 100px;
+}
+.costLabel {
+    margin-left: 10px;
+}
+.topLabel {
+    margin: 10px 0;
+    border-bottom: 1px solid black;
+}
+
+#upgradeContainer {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 400px;
+}
+#upgradeContainer .upgradeButtonContainer button {
+
+}
+#upgradeContainer div {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+}
+#upgradeContainer div h1 {
+    margin: 0;
+    font-size: 20px;
+}
+#upgradeContainer div h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: normal;
+}
+#upgradeContainer div p {
+    margin: 0;
+}
+#upgradeContainer button {
+    display: block;
+}
