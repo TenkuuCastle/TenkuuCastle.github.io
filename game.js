@@ -339,7 +339,7 @@ var resources = {
     "Electron" : Electron = new Resource("Electron", {"Particle" : 5}, 0.00054, 0.1, {"Hydrogen" : 1}, 1.2),
     "Proton" : Proton = new Resource("Proton", {"Particle" : 5}, 1.0073, 0.1, {"Hydrogen" : 1}, 1.2),
     "Neutron" : Neutron = new Resource("Neutron", {"Particle" : 5}, 1.0087, 0.1, {"Hydrogen" : 1}, 1.2),
-    "Hydrogen" : Hydrogen = new Resource("Hydrogen", {"Electron" : 1, "Proton" : 1, "Neutron" : 1}, 1.008, 0.1, {"Carbon" : 1}, 1.2),
+    "Hydrogen" : Hydrogen = new Resource("Hydrogen", {"Electron" : 1, "Proton" : 1, "Neutron" : 1, "Particle" : 25}, 1.008, 0.1, {"Carbon" : 1}, 1.2),
     "Carbon" : Carbon = new Resource("Carbon", {"Hydrogen" : 1, "Electron" : 5, "Proton" : 5, "Neutron" : 5, "Particle" : 100}, 12.011, 0, 0)
 }
 
