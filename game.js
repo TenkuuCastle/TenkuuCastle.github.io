@@ -441,10 +441,10 @@ window.onload = function() {
 function checkButtons() { //check for new unlocks (TODO: make run with loops)
     if (Hydrogen.unlock) {document.getElementById("HydrogenContainer").style.display = "block";} //unlock hydrogen if upgrade has been purchased
     if (Carbon.unlock) {document.getElementById("CarbonContainer").style.display = "block";} //unlock carbon if upgrade has been purchased
-    if (Hydrogen.count >= 1 || Proton.autobuyerUnlock) {document.getElementById("ProtonAutobuyerContainer").style.display = "inline-block"; document.getElementById("ProtonAutobuyerPrice").style.display = "inline-block"; Proton.autobuyerUnlock = true}
-    if (Hydrogen.count >= 1 || Neutron.autobuyerUnlock) {document.getElementById("NeutronAutobuyerContainer").style.display = "inline-block"; document.getElementById("NeutronAutobuyerPrice").style.display = "inline-block"; Neutron.autobuyerUnlock = true}
-    if (Hydrogen.count >= 1 || Electron.autobuyerUnlock) {document.getElementById("ElectronAutobuyerContainer").style.display = "inline-block"; document.getElementById("ElectronAutobuyerPrice").style.display = "inline-block"; Electron.autobuyerUnlock = true}
-    if (Carbon.count >= 1 || Hydrogen.autobuyerUnlock) {document.getElementById("HydrogenAutobuyerContainer").style.display = "inline-block"; document.getElementById("HydrogenAutobuyerPrice").style.display = "inline-block"; Hydrogen.autobuyerUnlock = true}
+    if (Hydrogen.count >= 1 || Proton.autobuyerUnlock) {document.getElementById("ProtonAutobuyerContainer").style.display = "inline-block"; Proton.autobuyerUnlock = true}
+    if (Hydrogen.count >= 1 || Neutron.autobuyerUnlock) {document.getElementById("NeutronAutobuyerContainer").style.display = "inline-block"; Neutron.autobuyerUnlock = true}
+    if (Hydrogen.count >= 1 || Electron.autobuyerUnlock) {document.getElementById("ElectronAutobuyerContainer").style.display = "inline-block"; Electron.autobuyerUnlock = true}
+    if (Carbon.count >= 1 || Hydrogen.autobuyerUnlock) {document.getElementById("HydrogenAutobuyerContainer").style.display = "inline-block"; Hydrogen.autobuyerUnlock = true}
     if (Carbon.autobuyerUnlock) {document.getElementById("CarbonAutobuyerContainer").style.display = "inline-block"; Carbon.autobuyerUnlock = true}
     for (var item in resources) {
         if (resources[item].autobuyerUnlock) {

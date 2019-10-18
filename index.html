@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
     </head>
     <body>
@@ -23,43 +23,49 @@
 
             <div class="mass">Total Mass: <span id="massCount"></span></div>
 
-            <div class="objectContainer" id="ElectronContainer" style="">
+            <div class="objectContainer" id="ElectronContainer">
                 <button class="objectButton" id="ElectronButton" onclick="Electron.click()">Electron</button>
                 <span class="objectPrice" id="ElectronPrice"></span>
                 <span class="objectNum" id="numElectron"></span>
                 <span class="objectSpeed" id="ElectronSpeed"></span>
-                <div class="autobuyerContainer" id="ElectronAutobuyerContainer" style="display: none">
-                    <button class="autobuyerMinus" onclick="Electron.autobuyerMinus()">-</button>
-                    <span class="autobuyerCount" id="ElectronAutobuyerCount">0</span>
-                    <button class="autobuyerPlus" onclick="Electron.autobuyerPlus()">+</button>
+                <div class="autobuyer-box" id="ElectronAutobuyerContainer" style="display: none">
+                    <div class="autobuyerContainer">
+                        <button class="autobuyerMinus" onclick="Electron.autobuyerMinus()">-</button>
+                        <span class="autobuyerCount" id="ElectronAutobuyerCount">0</span>
+                        <button class="autobuyerPlus" onclick="Electron.autobuyerPlus()">+</button>
+                    </div>
+                    <span class="objectAutobuyerPrice" id="ElectronAutobuyerPrice"></span>
                 </div>
-                <span class="objectAutobuyerPrice" id="ElectronAutobuyerPrice" style="display: none"></span>
             </div>
 
-            <div class="objectContainer" id="ProtonContainer" style="">
+            <div class="objectContainer" id="ProtonContainer">
                 <button class="objectButton" id="ProtonButton" onclick="Proton.click()">Proton</button>
                 <span class="objectPrice" id="ProtonPrice"></span>
                 <span class="objectNum" id="numProton"></span>
                 <span class="objectSpeed" id="ProtonSpeed"></span>
-                <div class="autobuyerContainer" id="ProtonAutobuyerContainer" style="display: none">
-                    <button class="autobuyerMinus" onclick="Proton.autobuyerMinus()">-</button>
-                    <span class="autobuyerCount" id="ProtonAutobuyerCount">0</span>
-                    <button class="autobuyerPlus" onclick="Proton.autobuyerPlus()">+</button>
+                <div class="autobuyer-box" id="ProtonAutobuyerContainer" style="display: none">
+                    <div class="autobuyerContainer">
+                        <button class="autobuyerMinus" onclick="Proton.autobuyerMinus()">-</button>
+                        <span class="autobuyerCount" id="ProtonAutobuyerCount">0</span>
+                        <button class="autobuyerPlus" onclick="Proton.autobuyerPlus()">+</button>
+                    </div>
+                    <span class="objectAutobuyerPrice" id="ProtonAutobuyerPrice"></span>
                 </div>
-                <span class="objectAutobuyerPrice" id="ProtonAutobuyerPrice" style="display: none"></span>
             </div>
             
-            <div class="objectContainer" id="NeutronContainer" style="">
+            <div class="objectContainer" id="NeutronContainer">
                 <button class="objectButton" id="NeutronButton" onclick="Neutron.click()">Neutron</button>
                 <span class="objectPrice" id="NeutronPrice"></span>
                 <span class="objectNum" id="numNeutron"></span>
                 <span class="objectSpeed" id="NeutronSpeed"></span>
-                <div class="autobuyerContainer" id="NeutronAutobuyerContainer" style="display: none">
-                    <button class="autobuyerMinus" onclick="Neutron.autobuyerMinus()">-</button>
-                    <span class="autobuyerCount" id="NeutronAutobuyerCount">0</span>
-                    <button class="autobuyerPlus" onclick="Neutron.autobuyerPlus()">+</button>
+                <div class="autobuyer-box" id="NeutronAutobuyerContainer" style="display: none">
+                    <div class="autobuyerContainer">
+                        <button class="autobuyerMinus" onclick="Neutron.autobuyerMinus()">-</button>
+                        <span class="autobuyerCount" id="NeutronAutobuyerCount">0</span>
+                        <button class="autobuyerPlus" onclick="Neutron.autobuyerPlus()">+</button>
+                    </div>
+                    <span class="objectAutobuyerPrice" id="NeutronAutobuyerPrice"></span>
                 </div>
-                <span class="objectAutobuyerPrice" id="NeutronAutobuyerPrice" style="display: none"></span>
             </div>
 
             <div class="objectContainer" id="HydrogenContainer" style="display: none">
@@ -67,12 +73,14 @@
                 <span class="objectPrice" id="HydrogenPrice"></span>
                 <span class="objectNum" id="numHydrogen"></span>
                 <span class="objectSpeed" id="HydrogenSpeed"></span>
-                <div class="autobuyerContainer" id="HydrogenAutobuyerContainer" style="display: none">
-                    <button class="autobuyerMinus" onclick="Hydrogen.autobuyerMinus()">-</button>
-                    <span class="autobuyerCount" id="HydrogenAutobuyerCount">0</span>
-                    <button class="autobuyerPlus" onclick="Hydrogen.autobuyerPlus()">+</button>
+                <div class="autobuyer-box" id="HydrogenAutobuyerContainer" style="display: none">
+                    <div class="autobuyerContainer">
+                        <button class="autobuyerMinus" onclick="Hydrogen.autobuyerMinus()">-</button>
+                        <span class="autobuyerCount" id="HydrogenAutobuyerCount">0</span>
+                        <button class="autobuyerPlus" onclick="Hydrogen.autobuyerPlus()">+</button>
+                    </div>
+                    <span class="objectAutobuyerPrice" id="HydrogenAutobuyerPrice"></span>
                 </div>
-                <span class="objectAutobuyerPrice" id="HydrogenAutobuyerPrice" style="display: none"></span>
             </div>
 
             <div class="objectContainer" id="CarbonContainer" style="display: none">
@@ -80,12 +88,14 @@
                 <span class="objectPrice" id="CarbonPrice"></span>
                 <span class="objectNum" id="numCarbon"></span>
                 <span class="objectSpeed" id="CarbonSpeed"></span>
-                <div class="autobuyerContainer" id="CarbonAutobuyerContainer" style="display: none">
-                    <button class="autobuyerMinus" onclick="Carbon.autobuyerMinus()">-</button>
-                    <span class="autobuyerCount" id="CarbonAutobuyerCount">0</span>
-                    <button class="autobuyerPlus" onclick="Carbon.autobuyerPlus()">+</button>
+                <div class="autobuyer-box" id="CarbonAutobuyerContainer" style="display: none">
+                    <div class="autobuyerContainer">
+                        <button class="autobuyerMinus" onclick="Carbon.autobuyerMinus()">-</button>
+                        <span class="autobuyerCount" id="CarbonAutobuyerCount">0</span>
+                        <button class="autobuyerPlus" onclick="Carbon.autobuyerPlus()">+</button>
+                    </div>
+                    <span class="objectAutobuyerPrice" id="CarbonAutobuyerPrice"></span>
                 </div>
-                <span class="objectAutobuyerPrice" id="CarbonAutobuyerPrice" style="display: none"></span>
             </div>
 
         </div>

@@ -35,7 +35,7 @@
     width: 110px;
 }
 .costLabel {
-    margin-left: 10px;
+    margin-left: 25px;
 }
 .topLabel {
     margin: 10px 0;
@@ -44,10 +44,12 @@
 .autobuyerContainer {
     vertical-align: top;
     width: 110px;
+    display: inline-block;
 }
 .objectAutobuyerPrice {
     vertical-align: top;
     width: 110px;
+    display: inline-block;
 }
 .objectContainer {
     padding: 15px;
@@ -60,6 +62,7 @@
     display: inline-block;
     vertical-align: top;
     max-width: 400px;
+    margin: 0 20px;
 }
 #upgradeContainer .upgradeButtonContainer button {
 
@@ -69,7 +72,7 @@
     display: inline-block;
     padding: 10px;
     margin: 5px 0;
-    width: 100%;
+    width: 93%;
 }
 #upgradeContainer div h1 {
     margin: 0;
@@ -85,4 +88,35 @@
 }
 #upgradeContainer button {
     display: block;
+}
+
+
+/*MOBILE STYLES*/
+@media only screen and (max-width: 700px) {
+    .objectButton {
+        display: block;
+        margin: 0 auto;
+    }
+    .objectPrice, .objectNum, .objectSpeed {
+        display: block;
+        margin: 5px auto;
+        text-align: center;
+    }
+    .autobuyer-box {
+        display: inline-block;
+        border: 1px solid grey;
+        padding: 10px;
+    }
+    .autobuyerContainer, .objectAutobuyerPrice {
+        width: auto;
+    }
+    .objectContainer {
+        text-align: center;
+    }
+    .topLabel {
+        display: none;
+    }
+    .mainResourceContainer {
+        width: 100%;
+    }
 }
