@@ -7,7 +7,10 @@
 .objectButton {
     width: 100px;
     vertical-align: top;
-    
+    background: none;
+    border: 1px solid black;
+    padding: 8px 10px;
+    outline: none;
 }
 .objectPrice {
     width: 100px;
@@ -29,7 +32,7 @@
     display: inline-block;
 }
 #autobuyerLabel, #autobuyerCostLabel {
-    width: 100px;
+    width: 110px;
 }
 .costLabel {
     margin-left: 10px;
@@ -37,6 +40,20 @@
 .topLabel {
     margin: 10px 0;
     border-bottom: 1px solid black;
+}
+.autobuyerContainer {
+    vertical-align: top;
+    width: 110px;
+}
+.objectAutobuyerPrice {
+    vertical-align: top;
+    width: 110px;
+}
+.objectContainer {
+    padding: 15px;
+    border: solid black 2px;
+    border-radius: 4px;
+    margin: 5px 0;
 }
 
 #upgradeContainer {

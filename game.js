@@ -1,7 +1,7 @@
 var tickSpeed = 1000;
 var hideUpgrades = false;
 
-class Resource {
+class Resource {//TODO: clean up class, add function to generate HTML
     name = "";
     count = 0;
     massAMU = 0;
@@ -27,11 +27,15 @@ class Resource {
     }
     canBuy(_cost) {
         var canBuy = true;
-        for (var item in _cost) {
-            var resourceCount = resources[item].count;
-            if (resourceCount < _cost[item]) {
-                canBuy = false;
+        if (!mass.isFull) {
+            for (var item in _cost) {
+                var resourceCount = resources[item].count;
+                if (resourceCount < _cost[item]) {
+                    canBuy = false;
+                }
             }
+        }  else {
+            canBuy = false;
         }
         
         return canBuy;
@@ -144,7 +148,7 @@ class Resource {
 class Mass {//TODO: add code to stop production when max mass is reached
     massCap = 10000;
     currentMass = 0;
-    isFull = 0;
+    isFull = false;
     constructor(_massCap) {
         this.massCap = _massCap;
     }
@@ -154,7 +158,11 @@ class Mass {//TODO: add code to stop production when max mass is reached
             this.currentMass += this.calculateMass(resources[item]);
         }
 
-        //mass removal?
+        if (this.currentMass >= this.massCap) {
+            this.isFull = true;
+        } else {
+            this.isFull = false;
+        }
     }
     calculateMass(_resource) {
         var massTotal = 0;
@@ -338,22 +346,46 @@ var upgrades = {
         },
         {"Electron" : 5},
     ),
-    "carbonUnlock" : carbonUnlock = new Upgrade("carbonUnlockUpgrade",
-                                                "Unlock Carbon",
-                                                "",
-                                                {"Hydrogen" : 100},
-                                                function() {
-                                                    Carbon.unlock = true;
-                                                },
-                                                {"Hydrogen" : 20}),
-    "electronSpeedUpgrade1" : electronSpeedUpgrade1 = new Upgrade("electronSpeedUpgrade1",
-                                                                    "Electron Autobuyer Speed",
-                                                                    "Double the speed at which Electrons generate!",
-                                                                    {"Hydrogen" : 100},
-                                                                    function() {
-                                                                        Electron.autobuyerSpeed = Electron.autobuyerSpeed * 2;
-                                                                    },
-                                                                    {"Electron" : 100}),
+    "carbonUnlock" : carbonUnlock = new Upgrade(
+        "carbonUnlockUpgrade",
+        "Unlock Carbon",
+        "",
+        {"Hydrogen" : 100},
+        function() {
+            Carbon.unlock = true;
+        },
+        {"Hydrogen" : 20}
+    ),
+    "electronSpeedUpgrade1" : electronSpeedUpgrade1 = new Upgrade(
+        "electronSpeedUpgrade1",
+        "Electron Autobuyer Speed",
+        "Double the speed at which Electrons generate!",
+        {"Hydrogen" : 20},
+        function() {
+            Electron.autobuyerSpeed = Electron.autobuyerSpeed * 2;
+        },
+        {"Hydrogen" : 10}
+    ),
+    "protonSpeedUpgrade1" : protonSpeedUpgrade1 = new Upgrade(
+        "protonSpeedUpgrade1",
+        "Proton Autobuyer Speed",
+        "Double the speed at which Protons generate!",
+        {"Hydrogen" : 30},
+        function() {
+            Proton.autobuyerSpeed = Proton.autobuyerSpeed * 2;
+        },
+        {"Hydrogen" : 20}
+    ),
+    "neutronSpeedUpgrade1" : neutronSpeedUpgrade1 = new Upgrade(
+        "neutronSpeedUpgrade1",
+        "Neutron Autobuyer Speed",
+        "Double the speed at which Neutrons generate!",
+        {"Hydrogen" : 40},
+        function() {
+            Neutron.autobuyerSpeed = Neutron.autobuyerSpeed * 2;
+        },
+        {"Hydrogen" : 30}
+    ),
 
 }
 
@@ -412,8 +444,8 @@ function checkButtons() { //check for new unlocks (TODO: make run with loops)
     if (Hydrogen.count >= 1 || Proton.autobuyerUnlock) {document.getElementById("ProtonAutobuyerContainer").style.display = "inline-block"; document.getElementById("ProtonAutobuyerPrice").style.display = "inline-block"; Proton.autobuyerUnlock = true}
     if (Hydrogen.count >= 1 || Neutron.autobuyerUnlock) {document.getElementById("NeutronAutobuyerContainer").style.display = "inline-block"; document.getElementById("NeutronAutobuyerPrice").style.display = "inline-block"; Neutron.autobuyerUnlock = true}
     if (Hydrogen.count >= 1 || Electron.autobuyerUnlock) {document.getElementById("ElectronAutobuyerContainer").style.display = "inline-block"; document.getElementById("ElectronAutobuyerPrice").style.display = "inline-block"; Electron.autobuyerUnlock = true}
-    if (Carbon.count >= 1 || Hydrogen.autobuyerUnlock) {document.getElementById("HydrogenAutobuyerContainer").style.display = "inline-block"; Hydrogen.autobuyerUnlock = true}
-    if (Hydrogen.count >= 10 || Carbon.autobuyerUnlock) {document.getElementById("CarbonAutobuyerContainer").style.display = "inline-block"; Carbon.autobuyerUnlock = true}
+    if (Carbon.count >= 1 || Hydrogen.autobuyerUnlock) {document.getElementById("HydrogenAutobuyerContainer").style.display = "inline-block"; document.getElementById("HydrogenAutobuyerPrice").style.display = "inline-block"; Hydrogen.autobuyerUnlock = true}
+    if (Carbon.autobuyerUnlock) {document.getElementById("CarbonAutobuyerContainer").style.display = "inline-block"; Carbon.autobuyerUnlock = true}
     for (var item in resources) {
         if (resources[item].autobuyerUnlock) {
             document.getElementById("autobuyerLabel").style.display = "inline-block";
