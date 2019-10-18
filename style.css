@@ -12,6 +12,9 @@
     padding: 8px 10px;
     outline: none;
 }
+.objectButton:active {
+    background: lightgrey;
+}
 .objectPrice {
     width: 100px;
     display: inline-block;
