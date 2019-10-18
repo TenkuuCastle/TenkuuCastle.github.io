@@ -23,7 +23,22 @@
 
             <div class="mass">Total Mass: <span id="massCount"></span></div>
 
-            <div class="objectContainer" id="ElectronContainer">
+            <div class="objectContainer" id="ParticleContainer">
+                <button class="objectButton" id="ParticleButton" onclick="Particle.click()">Particle</button>
+                <span class="objectPrice" id="ParticlePrice"></span>
+                <span class="objectNum" id="numParticle"></span>
+                <span class="objectSpeed" id="ParticleSpeed"></span>
+                <div class="autobuyer-box" id="ParticleAutobuyerContainer" style="display: none">
+                    <div class="autobuyerContainer">
+                        <button class="autobuyerMinus" onclick="Particle.autobuyerMinus()">-</button>
+                        <span class="autobuyerCount" id="ParticleAutobuyerCount">0</span>
+                        <button class="autobuyerPlus" onclick="Particle.autobuyerPlus()">+</button>
+                    </div>
+                    <span class="objectAutobuyerPrice" id="ParticleAutobuyerPrice"></span>
+                </div>
+            </div>
+
+            <div class="objectContainer" id="ElectronContainer" style="display: none">
                 <button class="objectButton" id="ElectronButton" onclick="Electron.click()">Electron</button>
                 <span class="objectPrice" id="ElectronPrice"></span>
                 <span class="objectNum" id="numElectron"></span>
@@ -38,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="objectContainer" id="ProtonContainer">
+            <div class="objectContainer" id="ProtonContainer"  style="display: none">
                 <button class="objectButton" id="ProtonButton" onclick="Proton.click()">Proton</button>
                 <span class="objectPrice" id="ProtonPrice"></span>
                 <span class="objectNum" id="numProton"></span>
@@ -53,7 +68,7 @@
                 </div>
             </div>
             
-            <div class="objectContainer" id="NeutronContainer">
+            <div class="objectContainer" id="NeutronContainer"  style="display: none">
                 <button class="objectButton" id="NeutronButton" onclick="Neutron.click()">Neutron</button>
                 <span class="objectPrice" id="NeutronPrice"></span>
                 <span class="objectNum" id="numNeutron"></span>

@@ -21,8 +21,10 @@ class Resource {//TODO: clean up class, add function to generate HTML
         this.cost = _cost;
         this.massAMU = _massAMU;
         this.autobuyerSpeed = _autobuyerSpeed;
+        for (var item in _autobuyerCost) {
+            this.autobuyerCostInitial[item] = _autobuyerCost[item];
+        }
         this.autobuyerCost = _autobuyerCost;
-        this.autobuyerCostInitial = _autobuyerCost;
         this.priceRatio = _priceRatio;
     }
     canBuy(_cost) {
@@ -46,6 +48,7 @@ class Resource {//TODO: clean up class, add function to generate HTML
             this.count += this.modifier;
             for (var item in this.cost) {
                 resources[item].count = resources[item].count - (this.cost[item] * this.modifier);
+                resources[item].updateCount();
             }
         }
 
@@ -136,9 +139,15 @@ class Resource {//TODO: clean up class, add function to generate HTML
         document.getElementById(this.name + "AutobuyerCount").innerHTML = this.autobuyer;
 
         //update autobuyer cost
-        for (var item in this.autobuyerCost) {
-            document.getElementById(this.name + "AutobuyerPrice").innerHTML = this.autobuyerCost[item].toFixed(3) + " " + item;
+
+        priceText = "";
+        for (var price in this.autobuyerCost) {
+            priceText += this.autobuyerCost[price].toFixed(3) + " " + price;
+            if (this.autobuyerCost[price] > 1) {priceText += "s";}
+            priceText += "</br>";
         }
+        document.getElementById(this.name + "AutobuyerPrice").innerHTML = priceText;
+
     }
     updateCount() {
         document.getElementById("num" + this.name).innerHTML = this.count.toFixed(3);
@@ -326,16 +335,47 @@ function swapUpgradeButtons() {
 }
 
 var resources = {
-    "Electron" : Electron = new Resource("Electron", {}, 0.00054, 0.1, {"Hydrogen" : 1}, 1.2),
-    "Proton" : Proton = new Resource("Proton", {}, 1.0073, 0.1, {"Hydrogen" : 1}, 1.2),
-    "Neutron" : Neutron = new Resource("Neutron", {}, 1.0087, 0.1, {"Hydrogen" : 1}, 1.2),
+    "Particle" : Particle = new Resource("Particle", {}, 0, 1, {"Electron" : 1, "Proton" : 1, "Neutron" : 1}, 1.2),
+    "Electron" : Electron = new Resource("Electron", {"Particle" : 5}, 0.00054, 0.1, {"Hydrogen" : 1}, 1.2),
+    "Proton" : Proton = new Resource("Proton", {"Particle" : 5}, 1.0073, 0.1, {"Hydrogen" : 1}, 1.2),
+    "Neutron" : Neutron = new Resource("Neutron", {"Particle" : 5}, 1.0087, 0.1, {"Hydrogen" : 1}, 1.2),
     "Hydrogen" : Hydrogen = new Resource("Hydrogen", {"Electron" : 1, "Proton" : 1, "Neutron" : 1}, 1.008, 0.1, {"Carbon" : 1}, 1.2),
-    "Carbon" : Carbon = new Resource("Carbon", {"Hydrogen" : 1, "Electron" : 5, "Proton" : 5, "Neutron" : 5}, 12.011, 0, 0.01)
+    "Carbon" : Carbon = new Resource("Carbon", {"Hydrogen" : 1, "Electron" : 5, "Proton" : 5, "Neutron" : 5, "Particle" : 100}, 12.011, 0, 0)
 }
 
-var mass = new Mass(10000);
+var mass = new Mass(10000000);
 
 var upgrades = {
+    "electronUnlock" : electronUnlock = new Upgrade(
+        "electronUnlockUpgrade",
+        "Unlock Electrons",
+        "",
+        {"Particle" : 2},
+        function() {
+            Electron.unlock = true;
+        },
+        {"Particle" : 5},
+    ),
+    "protonUnlock" : protonUnlock = new Upgrade(
+        "protonUnlockUpgrade",
+        "Unlock Protons",
+        "",
+        {"Particle" : 2},
+        function() {
+            Proton.unlock = true;
+        },
+        {"Particle" : 5},
+    ),
+    "neutronUnlock" : neutronUnlock = new Upgrade(
+        "neutronUnlockUpgrade",
+        "Unlock Neutrons",
+        "",
+        {"Particle" : 2},
+        function() {
+            Neutron.unlock = true;
+        },
+        {"Particle" : 5},
+    ),
     "hydrogenUnlock" : hydrogenUnlock = new Upgrade(
         "hydrogenUnlockUpgrade",
         "Unlock Hydrogen",
@@ -350,7 +390,7 @@ var upgrades = {
         "carbonUnlockUpgrade",
         "Unlock Carbon",
         "",
-        {"Hydrogen" : 100},
+        {"Hydrogen" : 35},
         function() {
             Carbon.unlock = true;
         },
@@ -439,8 +479,12 @@ window.onload = function() {
 
 /*game loop classes*/
 function checkButtons() { //check for new unlocks (TODO: make run with loops)
+    if (Electron.unlock) {document.getElementById("ElectronContainer").style.display = "block";} //unlock electron if upgrade has been purchased
+    if (Proton.unlock) {document.getElementById("ProtonContainer").style.display = "block";} //unlock proton if upgrade has been purchased
+    if (Neutron.unlock) {document.getElementById("NeutronContainer").style.display = "block";} //unlock neutron if upgrade has been purchased
     if (Hydrogen.unlock) {document.getElementById("HydrogenContainer").style.display = "block";} //unlock hydrogen if upgrade has been purchased
     if (Carbon.unlock) {document.getElementById("CarbonContainer").style.display = "block";} //unlock carbon if upgrade has been purchased
+    if ((Electron.count >= 1 && Proton.count >= 1 && Neutron.count >= 1) || Particle.autobuyerUnlock) {document.getElementById("ParticleAutobuyerContainer").style.display = "inline-block"; Particle.autobuyerUnlock = true}
     if (Hydrogen.count >= 1 || Proton.autobuyerUnlock) {document.getElementById("ProtonAutobuyerContainer").style.display = "inline-block"; Proton.autobuyerUnlock = true}
     if (Hydrogen.count >= 1 || Neutron.autobuyerUnlock) {document.getElementById("NeutronAutobuyerContainer").style.display = "inline-block"; Neutron.autobuyerUnlock = true}
     if (Hydrogen.count >= 1 || Electron.autobuyerUnlock) {document.getElementById("ElectronAutobuyerContainer").style.display = "inline-block"; Electron.autobuyerUnlock = true}
