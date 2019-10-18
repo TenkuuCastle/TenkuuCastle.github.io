@@ -395,7 +395,7 @@ var upgrades = {
         function() {
             Carbon.unlock = true;
         },
-        {"Hydrogen" : 20}
+        {"Hydrogen" : 10}
     ),
     "electronSpeedUpgrade1" : electronSpeedUpgrade1 = new Upgrade(
         "electronSpeedUpgrade1",
