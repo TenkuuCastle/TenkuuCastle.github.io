@@ -400,31 +400,31 @@ var upgrades = {
         "electronSpeedUpgrade1",
         "Electron Autobuyer Speed",
         "Double the speed at which Electrons generate!",
-        {"Hydrogen" : 20},
+        {"Hydrogen" : 40},
         function() {
             Electron.autobuyerSpeed = Electron.autobuyerSpeed * 2;
         },
-        {"Hydrogen" : 10}
+        {"Hydrogen" : 30}
     ),
     "protonSpeedUpgrade1" : protonSpeedUpgrade1 = new Upgrade(
         "protonSpeedUpgrade1",
         "Proton Autobuyer Speed",
         "Double the speed at which Protons generate!",
-        {"Hydrogen" : 30},
+        {"Hydrogen" : 45},
         function() {
             Proton.autobuyerSpeed = Proton.autobuyerSpeed * 2;
         },
-        {"Hydrogen" : 20}
+        {"Hydrogen" : 35}
     ),
     "neutronSpeedUpgrade1" : neutronSpeedUpgrade1 = new Upgrade(
         "neutronSpeedUpgrade1",
         "Neutron Autobuyer Speed",
         "Double the speed at which Neutrons generate!",
-        {"Hydrogen" : 40},
+        {"Hydrogen" : 50},
         function() {
             Neutron.autobuyerSpeed = Neutron.autobuyerSpeed * 2;
         },
-        {"Hydrogen" : 30}
+        {"Hydrogen" : 40}
     ),
 
 }
