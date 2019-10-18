@@ -1,4 +1,5 @@
-var tickSpeed = 1000;
+var tickSpeed = 250;
+var tickCount = 0;
 var hideUpgrades = false;
 
 class Resource {//TODO: clean up class, add function to generate HTML
@@ -131,7 +132,7 @@ class Resource {//TODO: clean up class, add function to generate HTML
         this.updateCount();
 
         //update speed
-        var speed = (tickSpeed * this.calculateSpeed())/1000;
+        var speed =this.calculateSpeed();
         var speedOut = speed.toFixed(3) + "/s";
         document.getElementById(this.name + "Speed").innerHTML = speedOut;
 
@@ -512,9 +513,13 @@ function updateTotals() { //update total numbers every tick, check if anything n
 }
 
 window.setInterval(function(){ //Game Loop
+    tickCount += 1;
+    if (tickCount == 4) {
     for (var item in resources) {
         resources[item].spawn();
     }
-    updateTotals();
     save();
+    tickCount = 0;
+    }
+    updateTotals();
 }, tickSpeed);
